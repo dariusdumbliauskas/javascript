@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Automobiliu lentele</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        table {
+            background-color:#1abc9c;
+        }
+        .container {
+            overflow: hidden;
+        }
+
+        .tab {
+            float: left;
+        }
+
+        .tab-2 {
+            margin-left: 50px
+        }
+
+        .tab-2 input {
+            display: block;
+            margin-bottom: 10px
+        }
+
+        tr {
+            transition: all .25s ease-in-out
+        }
+
+        tr:hover {
+            background-color: #EEE;
+            cursor: pointer
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="tab tab-1">
+            <table id="table" border="1">
+                <tr>
+                    <th>Data</th>
+                    <th>Numeris</th>
+                    <th>Metrai</th>
+                    <th>Sekundes</th>
+                    <th>Greitis</th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="tab tab-2">
+            Data :
+            <input type="text" name="data" id="data"> 
+            Numeris :
+            <input type="text" name="numeris" id="numeris"> 
+            Metrai :
+            <input type="text" name="metrai" id="metrai">
+            Sekundes:
+            <input type="text" name="Sekundes" id="sekundes">
+
+            <button onclick="addHtmlTableRow();">Prideti</button>
+            <button onclick="editHtmlTbleSelectedRow();">Redaguoti</button>
+            <button onclick="removeSelectedRow();">Istrinti</button>
+        </div>
+    </div>
+
+    <script>
+
+        var rIndex,//row index kolkas tuscia
+            table = document.getElementById("table");//row index kolkas tuscia
+
+        // check the empty input
+        function checkEmptyInput() {
+            var isEmpty = false,//pradedam su false kad netuscias ir jei betkuris tuscias returnina True. 
+                data = document.getElementById("data").value,
+                numeris = document.getElementById("numeris").value,
+                metrai = document.getElementById("metrai").value,
+                sekundes = document.getElementById("sekundes").value,
+                greitis = metrai / sekundes * 3.6;
+
+            if (data === "") {
+                alert("Iveskite data");
+                isEmpty = true;
+            }
+            else if (numeris === "") {
+                alert("Iveskite numeri");
+                isEmpty = true;
+            }
+            else if (metrai === "") {
+                alert("Iveskite metrus");
+                isEmpty = true;
+            }
+            else if (sekundes === "") {
+                alert("Iveskite sekundes");
+                isEmpty = true;
+            }
+
+            return isEmpty;
+        }
+
+        // add Row
+        function addHtmlTableRow() {
+            // get the table by id
+            // create a new row and cells
+            // get value from input text
+            // set the values into row cell's
+            if (!checkEmptyInput()) {
+                var newRow = table.insertRow(table.length), // table = document.getElementById("table");
+                    //newRow = lenteleje pritaikyti funkcija insert row 
+                    //insert row
+                    cell1 = newRow.insertCell(0),
+                    cell2 = newRow.insertCell(1),
+                    cell3 = newRow.insertCell(2),
+                    cell4 = newRow.insertCell(3),
+                    cell5 = newRow.insertCell(4),
+                    //apsibreziam kad funkcija prikurs nauju cellu
+                    data = document.getElementById("data").value,
+                    numeris = document.getElementById("numeris").value,
+                    metrai = document.getElementById("metrai").value,
+                    sekundes = document.getElementById("sekundes").value,
+                    greitis = (metrai / sekundes * 3.6).toFixed(2);
+
+                cell1.innerHTML = data;//pirmam celle value is "fname" id
+                cell2.innerHTML = numeris;// ir t.t 
+                cell3.innerHTML = metrai;
+                cell4.innerHTML = sekundes;
+                cell5.innerHTML = greitis;
+                // call the function to set the event to the new row
+                selectedRowToInput();
+            }
+        }
+
+        // display selected row data into input text
+        function selectedRowToInput() {
+
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].onclick = function () {
+                    // get the seected row index
+                    rIndex = this.rowIndex;
+                    // rowIndex tai cia JS funkcija kuri parodo eiles indexa. 
+                    // o this parodo kad butent sitoje funkcijoje 
+                    document.getElementById("data").value = this.cells[0].innerHTML;
+                    document.getElementById("numeris").value = this.cells[1].innerHTML;
+                    document.getElementById("metrai").value = this.cells[2].innerHTML;
+                    document.getElementById("sekundes").value = this.cells[3].innerHTML;
+                    
+                };
+            }
+        }
+        selectedRowToInput();
+
+        function editHtmlTbleSelectedRow() {
+            var data = document.getElementById("data").value,
+                numeris = document.getElementById("numeris").value,
+                metrai = document.getElementById("metrai").value,
+                sekundes = document.getElementById("sekundes").value,
+                greitis = (metrai / sekundes * 3.6).toFixed(2);
+            if (!checkEmptyInput()) {
+                table.rows[rIndex].cells[0].innerHTML = data;
+                table.rows[rIndex].cells[1].innerHTML = numeris;
+                table.rows[rIndex].cells[2].innerHTML = metrai;
+                table.rows[rIndex].cells[3].innerHTML = sekundes;
+                table.rows[rIndex].cells[4].innerHTML = greitis;
+            }
+        }
+
+        function removeSelectedRow() {
+            table.deleteRow(rIndex);
+            // clear input text
+            document.getElementById("data").value = "";
+            document.getElementById("numeris").value = "";
+            document.getElementById("metrai").value = "";
+            document.getElementById("sekundes").value = "";
+            document.getElementById("greitis").value = "";
+
+        }
+    </script>
+
+</body>
+
+</html>
