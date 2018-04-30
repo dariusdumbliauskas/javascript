@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>Vardai</h2>
+    <ul>
+        <li>Darius</li>
+        <li>Petras</li>
+        <li>Jonas</li>
+        <li>Sigis</li>
+    </ul>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $('li').eq(2).css({color:'tomato'});
+    $('li').eq(2).next().css({color:'blue'});
+    $('li').eq(1).prev().css({color:'green'});
+</script>
+
+</html>

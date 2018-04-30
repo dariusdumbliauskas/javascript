@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .headline {
+            background-color: blue;
+        }
+
+        .bcg {
+            background-color: tomato;
+        }
+
+        .sub {
+            color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="headline">Headline!</h1>
+    <h2>Subhead</h2>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+
+        $('h1').click(function () {
+            $('h1').toggleClass('bcg');
+        });
+        $('h2').addClass('sub');
+
+    </script>
+
+</body>
+
+</html>

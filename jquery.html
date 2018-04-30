@@ -53,11 +53,16 @@
     <script>
         //nuvedus pele fade in 
 
-        $('.hide').mouseleave(function () {
+        // $('.hide').mouseleave(function () {
+        //     $('.hide').animate({ opacity: 1 }, 2000);
+        // });
+        // //uzvedus pele fade out
+        // $('.hide').mouseenter(function () {
+        //     $('.hide').animate({ opacity: 0, }, 2000);
+        // });
+
+        $('.hide').on('mouseleave, mouseenter', function() {
             $('.hide').animate({ opacity: 1 }, 2000);
-        });
-        //uzvedus pele fade out
-        $('.hide').mouseenter(function () {
             $('.hide').animate({ opacity: 0, }, 2000);
         });
 
