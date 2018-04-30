@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List</h1>
+    <ul class="list">
+        <li>first</li>
+        <li>second</li>
+        <li>third</li>
+        <li>forth</li>
+        
+    </ul>
+    <button onclick="myFunction()" type="button">Click Me!</button>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+
+function myFunction() {
+    $('.list li').each(function(){
+        $(this).attr('contenteditable', true);
+});
+}
+</script>
+</body>
+</html>
