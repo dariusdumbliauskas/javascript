@@ -14,11 +14,12 @@
 
   <div class="container">
   <h1>Change password</h1>
-  <p>Maximum password length - 8 characters.</p>
+  <p class="lead">Minimum password length - 8 characters.</p>
+  <p class="lead">Maximum password length - 15 characters.</p>
 
   <form action="change.php" method="post">
-            <input name="psw1" placeholder="Password" type="password" maxlength="8">
-            <input name="psw2" placeholder="Repeat Password" type="password" maxlength="8">
+            <input name="psw1" placeholder="Password" type="password" maxlength="15">
+            <input name="psw2" placeholder="Repeat Password" type="password" maxlength="15">
             <button class="btn btn-primary">Change password</button>
             
   </form>
